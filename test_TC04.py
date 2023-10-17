@@ -28,9 +28,9 @@ def test_TC04_ShouldNotAddActivityOnExpiredPost_when_PostExpired():
     url = getHost() + "/posts"
     headers = headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + olgasToken}
     payload = {
-        'title': 'Olga test TC04 item added from test',
-        'category': ['sport'],
-        'body': 'Super cool item posted by '  + 'Olga',
+        'title': 'Olga post',
+        'category': ['tech'],
+        'body': 'Super cool item posted by Olga',
         'expiration_time': 0 # 0 as test can't wait 5 min, 0 is equivalemt of elapsed time
     }
     response = requests.post(url, headers=headers, data=json.dumps(payload))

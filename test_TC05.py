@@ -22,7 +22,7 @@ def test_TC04_ShouldAddPost_when_UserLoggedIn():
     token = responseBody['token']
     assert token is not None
 
-    # Add Olga's item
+    # Add post
     url = getHost() + "/posts"
     headers = headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     payload = {
