@@ -5,7 +5,7 @@ import jwt
 from configuration import *
 
 '''
-TC 09: Nestor “likes” Nick’ s post and “dislikes” Mary’ s on the T ech topic.
+TC 09: Nestor “likes” Nick’ s post and “dislikes” Mary’ s on the Tech topic.
 '''
 
 @pytest.mark.parametrize("username, email, password, roles", [
@@ -27,7 +27,7 @@ def test_TC09_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
 
     ########### Get all posts
     # Get all posts
-    url = getHost() + "/posts"
+    url = getHost() + "/posts/topic/tech"
     headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     response = requests.get(url, headers=headers)
     responseBody = response.json();
@@ -36,20 +36,18 @@ def test_TC09_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
 
     ###################### NICK POST + Like ########################
     # Filter Nick post in tech
-    nickTechPost = None
+    nickTechPost = []
     for post in responseBody:
         if post['owner_name'] == 'Nick':
-            for topic in post['category']:
-                if topic == 'tech':
-                    nickTechPost = post
+            nickTechPost.append(post)
     # Assert if Nick's post in tech exists
-    assert nickTechPost != None
+    assert len(nickTechPost) == 1
 
     ########### Add like to Nick post
     url = getHost() + "/activity"
     headers = headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     payload = {
-        'post_id': nickTechPost['_id'],
+        'post_id': nickTechPost[0]['_id'],
         'type': 'like',
         'body': '1'
     }

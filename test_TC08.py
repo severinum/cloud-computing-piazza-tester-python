@@ -28,7 +28,7 @@ def test_TC08_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
 
     ########### Get Mary's post in tech
     # Get all posts
-    url = getHost() + "/posts"
+    url = getHost() + "/posts/topic/tech"
     headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     response = requests.get(url, headers=headers)
     responseBody = response.json();
@@ -36,20 +36,18 @@ def test_TC08_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
     assert len(responseBody) == 3
 
     # Filter Mary post in tech
-    marysTechPost = None
+    marysTechPost = []
     for post in responseBody:
         if post['owner_name'] == 'Mary':
-            for topic in post['category']:
-                if topic == 'tech':
-                    marysTechPost = post
+            marysTechPost.append(post)
     # Assert if Mary's post in tech exists
-    assert marysTechPost != None
+    assert len(marysTechPost) == 1
 
     ########### Add likes to Mary's post
     url = getHost() + "/activity"
     headers = headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     payload = {
-        'post_id': marysTechPost['_id'],
+        'post_id': marysTechPost[0]['_id'],
         'type': 'like',
         'body': '1'
     }

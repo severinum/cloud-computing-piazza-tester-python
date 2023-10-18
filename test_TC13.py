@@ -12,7 +12,7 @@ TC 13: Nick browses all the available posts in the Tech topic;
 @pytest.mark.parametrize("username, email, password, roles", [
     ('Nick', 'nick@contoso.com', 'nickPa$$123', ['user'])
 ])
-def test_TC10_ShouldValidateNumberOfActivitiesOnPosts(username, email, password, roles):
+def test_TC13_ShouldValidateNumberOfActivitiesOnPosts(username, email, password, roles):
     ############# Login each user
     url = getHost() + "/users/login"
     headers = {'Content-Type': 'application/json'}
