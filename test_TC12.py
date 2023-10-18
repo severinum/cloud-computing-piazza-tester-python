@@ -5,14 +5,15 @@ import jwt
 from configuration import *
 
 '''
-TC 11: Mary likes her post on the Tech topic. This call should be unsuccessful; 
-       in Piazza, a post owner cannot like their messages.
+TC 12: Nick and Olga comment on Mary’s post on the Tech topic in a round-robin fashion 
+       (one after the other, adding at least two comments each).
 '''
 
 @pytest.mark.parametrize("username, email, password, roles", [
-    ('Mary', 'mary@contoso.com', 'maryPa$$123', ['user'])
+    ('Olga', 'olga@contoso.com', 'olgaPa$$123', ['user']),
+    ('Nick', 'nick@contoso.com', 'nickPa$$123', ['user'])
 ])
-def test_TC11_ShouldNotAllowToAddActivityOnOwnPost(username, email, password, roles):
+def test_TC12_ShouldAllowToAddActivityOnOtherUsersPosts(username, email, password, roles):
     ############# Login each user
     url = getHost() + "/users/login"
     headers = {'Content-Type': 'application/json'}
@@ -35,8 +36,6 @@ def test_TC11_ShouldNotAllowToAddActivityOnOwnPost(username, email, password, ro
     # Assert if 3 posts returned
     assert len(responseBody) == 3
 
-    
-
     ###################### GET MARY POST ########################
     # Filter Mary post in tech
     marysTechPost = []
@@ -46,16 +45,15 @@ def test_TC11_ShouldNotAllowToAddActivityOnOwnPost(username, email, password, ro
     # Assert if Mary's post in tech exists
     assert len(marysTechPost) == 1
 
-    ########### Add add like to Mary's own post
-    url = getHost() + "/activity"
-    headers = headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
-    payload = {
-        'post_id': marysTechPost[0]['_id'],
-        'type': 'like',
-        'body': '1'
-    }
-    response = requests.post(url, headers=headers, data=json.dumps(payload))
-    # Assert if add item has code 409
-    assert response.status_code == 409
-    responseBody = response.json();
-    assert responseBody['message'] == "Can't add activities to own posts"
+    ########### Add comment to Mary's post
+    for i in range(0,2):
+        url = getHost() + "/activity"
+        headers = headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
+        payload = {
+            'post_id': marysTechPost[0]['_id'],
+            'type': 'comment',
+            'body': 'Comment from ' + username
+        }
+        response = requests.post(url, headers=headers, data=json.dumps(payload))
+        # Assert if add item has code 201
+        assert response.status_code == 201
