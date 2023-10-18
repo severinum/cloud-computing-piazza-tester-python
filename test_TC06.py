@@ -29,7 +29,7 @@ def test_TC06_ShouldAddPost_when_UserLoggedIn():
         'title': 'Mary post',
         'category': ['tech'],
         'body': 'Super cool item posted by Mary',
-        'expiration_time': 5 
+        'expiration_time': 20
     }
     response = requests.post(url, headers=headers, data=json.dumps(payload))
     # Assert if add item has code 201
