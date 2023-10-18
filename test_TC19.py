@@ -33,3 +33,4 @@ def test_TC19_ShouldReturnZeroPosts(username, email, password, roles):
     # Assert if 3 posts returned
     assert len(responseBody) == 0
     
+    
