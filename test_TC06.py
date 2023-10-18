@@ -8,7 +8,7 @@ from configuration import *
 TC 06: Mary posts a message in the Tech topic with an expiration time using her token.
 '''
 
-def test_TC04_ShouldAddPost_when_UserLoggedIn():
+def test_TC06_ShouldAddPost_when_UserLoggedIn():
 
     ############# Login as Mary
     url = getHost() + "/users/login"

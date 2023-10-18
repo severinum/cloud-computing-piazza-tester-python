@@ -8,7 +8,7 @@ from configuration import *
 TC 05: Nick posts a message in the Tech topic with an expiration time using his token.
 '''
 
-def test_TC04_ShouldAddPost_when_UserLoggedIn():
+def test_TC05_ShouldAddPost_when_UserLoggedIn():
 
     ############# Login as Nick
     url = getHost() + "/users/login"

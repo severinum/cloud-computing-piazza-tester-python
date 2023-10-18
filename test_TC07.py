@@ -13,7 +13,7 @@ TC 07: Nick and Olga browse all the available posts in the Tech topic;
     ('Olga', 'olga@contoso.com', 'olgaPa$$123', ['user']),
     ('Nick', 'nick@contoso.com', 'nickPa$$123', ['user'])
 ])
-def test_TC04_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
+def test_TC07_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
     ############# Login 
     url = getHost() + "/users/login"
     headers = {'Content-Type': 'application/json'}

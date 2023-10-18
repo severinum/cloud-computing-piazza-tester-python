@@ -51,6 +51,13 @@ def test_ShouldEmptyTopicsCollection_When_AdminAuthenticated():
     # Assert if add item has code 200
     assert response.status_code == 200
 
+    # Empty activities collection
+    url = getHost() + "/activity/all"
+    headers = headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
+    response = requests.delete(url, headers=headers, data=json.dumps(payload))
+    # Assert if add item has code 200
+    assert response.status_code == 200
+
 
 # def test_ShouldRemoveAdminAccount_When_ValidUserId():
 #     ######## Login as user ########

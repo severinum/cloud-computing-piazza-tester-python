@@ -15,7 +15,7 @@ If so, the username will be extracted from the JWT token and compared with real 
     ('Olga', 'olga@contoso.com', 'olgaPa$$123', ['user']),
     ('Nick', 'nick@contoso.com', 'nickPa$$123', ['user']),
     ('Mary', 'mary@contoso.com', 'maryPa$$123', ['user']),
-    ('Nestor', 'nestor@contoso.com', 'nestor$$123', ['user'])
+    ('Nestor', 'nestor@contoso.com', 'nestorPa$$123', ['user'])
 ])
 def test_TC02_ShouldReturnJwtToken_when_UserAuthenticated(username, email, password, roles):
     url = getHost() + "/users/login"

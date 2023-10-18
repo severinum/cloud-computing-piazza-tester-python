@@ -44,7 +44,7 @@ def test_TC04_ShouldNotAddActivityOnExpiredPost_when_PostExpired():
     ############# Login as Nestor 'Nestor', 'nestor@contoso.com', 'nestor$$123',
     url = getHost() + "/users/login"
     headers = {'Content-Type': 'application/json'}
-    payload = {'email': 'nestor@contoso.com', 'password': 'nestor$$123'}
+    payload = {'email': 'nestor@contoso.com', 'password': 'nestorPa$$123'}
     response = requests.post(url, headers=headers, data=json.dumps(payload))
     # Assert if response has code 200
     assert response.status_code == 200

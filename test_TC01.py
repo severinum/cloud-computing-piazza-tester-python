@@ -11,7 +11,7 @@ TC 01: Olga, Nick, Mary and Nestor register in the application and access the AP
     ('Olga', 'olga@contoso.com', 'olgaPa$$123', ['user']),
     ('Nick', 'nick@contoso.com', 'nickPa$$123', ['user']),
     ('Mary', 'mary@contoso.com', 'maryPa$$123', ['user']),
-    ('Nestor', 'nestor@contoso.com', 'nestor$$123', ['user'])
+    ('Nestor', 'nestor@contoso.com', 'nestorPa$$123', ['user'])
 ])
 def test_TC01_should_RegisterUser_when_UserNotFound(username, email, password, roles):
         ########  Register New User ########
