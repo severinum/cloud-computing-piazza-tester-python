@@ -32,7 +32,7 @@ def test_TC14_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
         'title': 'Nestor post',
         'category': ['health'],
         'body': 'Super cool item posted by Nestor',
-        'expiration_time': 0 
+        'expiration_time': 5 
     }
     response = requests.post(url, headers=headers, data=json.dumps(payload))
     # Assert if add item has code 201
