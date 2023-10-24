@@ -38,7 +38,7 @@ def test_TC08_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
     # Filter Mary post in tech
     marysTechPost = []
     for post in responseBody:
-        if post['owner_name'] == 'Mary':
+        if post['owner']['username'] == 'Mary':
             marysTechPost.append(post)
     # Assert if Mary's post in tech exists
     assert len(marysTechPost) == 1

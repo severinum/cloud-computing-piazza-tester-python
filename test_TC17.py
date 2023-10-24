@@ -32,7 +32,7 @@ def test_TC17_ShouldNotAllowToAddCommentToExistingPostWithExpitedStatus(username
     responseBody = response.json();
     # Assert if 3 posts returned
     assert len(responseBody) == 1
-    assert responseBody[0]['owner_name'] == 'Nestor'
+    assert responseBody[0]['owner']['username'] == 'Nestor'
 
     # Test can't wait 5 min for Nestor post to expire, so we set it exiration status manually to Expired
     url = getHost() + "/posts/"+responseBody[0]['_id']
@@ -52,7 +52,7 @@ def test_TC17_ShouldNotAllowToAddCommentToExistingPostWithExpitedStatus(username
     responseBody = response.json();
     # Assert if 3 posts returned
     assert len(responseBody) == 1
-    assert responseBody[0]['owner_name'] == 'Nestor'
+    assert responseBody[0]['owner']['username'] == 'Nestor'
 
 
     # Add activity to post

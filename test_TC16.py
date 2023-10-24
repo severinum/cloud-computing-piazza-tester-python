@@ -32,7 +32,7 @@ def test_TC16_ShouldAllowToAddCommentToExistingPostWithLiveStatus(username, emai
     responseBody = response.json();
     # Assert if 3 posts returned
     assert len(responseBody) == 1
-    assert responseBody[0]['owner_name'] == 'Nestor'
+    assert responseBody[0]['owner']['username'] == 'Nestor'
     
     url = getHost() + "/activity"
     headers = headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}

@@ -38,7 +38,7 @@ def test_TC09_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
     # Filter Nick post in tech
     nickTechPost = []
     for post in responseBody:
-        if post['owner_name'] == 'Nick':
+        if post['owner']['username'] == 'Nick':
             nickTechPost.append(post)
     # Assert if Nick's post in tech exists
     assert len(nickTechPost) == 1
@@ -59,7 +59,7 @@ def test_TC09_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
     # Filter Mary post in tech
     marysTechPost = None
     for post in responseBody:
-        if post['owner_name'] == 'Mary':
+        if post['owner']['username'] == 'Mary':
             for topic in post['category']:
                 if topic == 'tech':
                     marysTechPost = post

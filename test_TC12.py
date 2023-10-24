@@ -40,7 +40,7 @@ def test_TC12_ShouldAllowToAddActivityOnOtherUsersPosts(username, email, passwor
     # Filter Mary post in tech
     marysTechPost = []
     for post in responseBody:
-        if post['owner_name'] == 'Mary':
+        if post['owner']['username'] == 'Mary':
             marysTechPost.append(post)
     # Assert if Mary's post in tech exists
     assert len(marysTechPost) == 1

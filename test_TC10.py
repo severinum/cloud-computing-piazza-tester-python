@@ -40,7 +40,7 @@ def test_TC10_ShouldValidateNumberOfActivitiesOnPosts(username, email, password,
     # Get Marys posts
     marysTechPost = []
     for post in responseBody:
-        if post['owner_name'] == 'Mary':
+        if post['owner']['username'] == 'Mary':
             marysTechPost.append(post)
     assert marysTechPost != None
     assert len(marysTechPost) == 1
@@ -52,7 +52,7 @@ def test_TC10_ShouldValidateNumberOfActivitiesOnPosts(username, email, password,
     # Get Nick posts
     nickTechPost = []
     for post in responseBody:
-        if post['owner_name'] == 'Nick':
+        if post['owner']['username'] == 'Nick':
             nickTechPost.append(post)
     assert nickTechPost != None
     assert len(nickTechPost) == 1

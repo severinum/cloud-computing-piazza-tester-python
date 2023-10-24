@@ -33,6 +33,6 @@ def test_TC20_ShouldReturnMaryPostAsTopPostInTech(username, email, password, rol
     response = requests.get(url, headers=headers)
     responseBody = response.json();
 
-    assert responseBody['owner_name'] == 'Mary'
+    assert responseBody['owner']['username'] == 'Mary'
     
     

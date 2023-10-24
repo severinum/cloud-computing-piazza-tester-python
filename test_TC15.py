@@ -32,4 +32,4 @@ def test_TC15_ShouldSeeJustOnePostInHealthTopic(username, email, password, roles
     responseBody = response.json();
     # Assert if 3 posts returned
     assert len(responseBody) == 1
-    assert responseBody[0]['owner_name'] == 'Nestor'
+    assert responseBody[0]['owner']['username'] == 'Nestor'
