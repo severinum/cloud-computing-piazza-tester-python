@@ -15,7 +15,7 @@ TC 07: Nick and Olga browse all the available posts in the Tech topic;
 ])
 def test_TC07_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
     ############# Login 
-    url = getHost() + "/users/login"
+    url = getHost() + "/user/login"
     headers = {'Content-Type': 'application/json'}
     payload = {'email': email, 'password': password}
     response = requests.post(url, headers=headers, data=json.dumps(payload))
@@ -28,7 +28,7 @@ def test_TC07_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
 
 
     # Get posts by topic
-    url = getHost() + "/posts/topic/tech"
+    url = getHost() + "/post/topic/tech"
     headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     response = requests.get(url, headers=headers)
     assert response.status_code == 200

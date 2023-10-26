@@ -13,7 +13,7 @@ TC 19: Nick browses all the expired messages on the Sports topic. These should b
 ])
 def test_TC19_ShouldReturnZeroPosts(username, email, password, roles):
     ############# Login each user
-    url = getHost() + "/users/login"
+    url = getHost() + "/user/login"
     headers = {'Content-Type': 'application/json'}
     payload = {'email': email, 'password': password}
     response = requests.post(url, headers=headers, data=json.dumps(payload))
@@ -26,7 +26,7 @@ def test_TC19_ShouldReturnZeroPosts(username, email, password, roles):
 
 
     ########### Get posts from Health topic
-    url = getHost() + "/posts/topic/sport"
+    url = getHost() + "/post/topic/sport"
     headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     response = requests.get(url, headers=headers)
     responseBody = response.json();

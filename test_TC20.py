@@ -15,7 +15,7 @@ TC 20: Nestor queries for an active post with the highest interest
 ])
 def test_TC20_ShouldReturnMaryPostAsTopPostInTech(username, email, password, roles):
     ############# Login each user
-    url = getHost() + "/users/login"
+    url = getHost() + "/user/login"
     headers = {'Content-Type': 'application/json'}
     payload = {'email': email, 'password': password}
     response = requests.post(url, headers=headers, data=json.dumps(payload))
@@ -28,7 +28,7 @@ def test_TC20_ShouldReturnMaryPostAsTopPostInTech(username, email, password, rol
 
 
     ########### Get top post in tech topic
-    url = getHost() + "/posts/top/tech"
+    url = getHost() + "/post/top/tech"
     headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     response = requests.get(url, headers=headers)
     responseBody = response.json();

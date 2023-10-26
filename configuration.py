@@ -1,9 +1,9 @@
-#### Local Environment
+### Local Environment
 PORT=3000
 HOST='localhost'
 
 #### Production Environment (K8S Cluster GCP)
-# HOST='34.41.98.117'
+# HOST="35.188.205.177"
 # PORT=80
 
 

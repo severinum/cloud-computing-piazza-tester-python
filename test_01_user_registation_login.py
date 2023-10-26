@@ -23,7 +23,7 @@ def test_ShouldLoginUser_When_UserAuthenticated():
     userUsername = random_user_name
 
     ########  Register New User (with admin role) ########
-    registrationUrl = getHost() + "/users/register"
+    registrationUrl = getHost() + "/user/register"
     username = userUsername
     email = userEmail
     password = userPlainPassword
@@ -45,7 +45,7 @@ def test_ShouldLoginUser_When_UserAuthenticated():
     user_id = responseBody['_id']
 
     ######## Login as New User (admin) ########
-    url = getHost() + "/users/login"
+    url = getHost() + "/user/login"
     headers = {'Content-Type': 'application/json'}
     payload = {'email': userEmail, 'password': userPlainPassword}
     response = requests.post(url, headers=headers, data=json.dumps(payload))
@@ -63,7 +63,7 @@ def test_ShouldLoginUser_When_UserAuthenticated():
     assert 'admin' in userRoles
 
     ######## Remove New User (to maintain clean database, validate admin role for delete endpoint) ########
-    url = getHost() + "/users/" + user_id
+    url = getHost() + "/user/" + user_id
     headers = {'Authorization': 'Bearer ' + jwtToken}
     response = requests.delete(url, headers=headers)
     # Assert if response has code 200

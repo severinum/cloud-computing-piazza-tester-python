@@ -13,7 +13,7 @@ After the end of the expiration time, the message will not accept any further us
 def test_TC04_ShouldNotAddActivityOnExpiredPost_when_PostExpired():
 
     ############# Login as OLGA
-    url = getHost() + "/users/login"
+    url = getHost() + "/user/login"
     headers = {'Content-Type': 'application/json'}
     payload = {'email': 'olga@contoso.com', 'password': 'olgaPa$$123'}
     response = requests.post(url, headers=headers, data=json.dumps(payload))
@@ -25,7 +25,7 @@ def test_TC04_ShouldNotAddActivityOnExpiredPost_when_PostExpired():
     assert olgasToken is not None
 
     # Add Olga's item
-    url = getHost() + "/posts"
+    url = getHost() + "/post"
     headers = headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + olgasToken}
     payload = {
         'title': 'Olga post',
@@ -42,7 +42,7 @@ def test_TC04_ShouldNotAddActivityOnExpiredPost_when_PostExpired():
 
     #################################################################
     ############# Login as Nestor 'Nestor', 'nestor@contoso.com', 'nestor$$123',
-    url = getHost() + "/users/login"
+    url = getHost() + "/user/login"
     headers = {'Content-Type': 'application/json'}
     payload = {'email': 'nestor@contoso.com', 'password': 'nestorPa$$123'}
     response = requests.post(url, headers=headers, data=json.dumps(payload))

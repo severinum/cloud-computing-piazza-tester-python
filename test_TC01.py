@@ -15,7 +15,7 @@ TC 01: Olga, Nick, Mary and Nestor register in the application and access the AP
 ])
 def test_TC01_should_RegisterUser_when_UserNotFound(username, email, password, roles):
         ########  Register New User ########
-        url = getHost() + "/users/register"
+        url = getHost() + "/user/register"
         roles = ['user']
 
         headers = {'Content-Type': 'application/json'}
@@ -34,7 +34,7 @@ def test_TC01_should_RegisterUser_when_UserNotFound(username, email, password, r
             user_id = responseBody['_id']
 
             ######## Login as New User (admin) ########
-            url = getHost() + "/users/login"
+            url = getHost() + "/user/login"
             headers = {'Content-Type': 'application/json'}
             payload = {'email': email, 'password': password}
             response = requests.post(url, headers=headers, data=json.dumps(payload))

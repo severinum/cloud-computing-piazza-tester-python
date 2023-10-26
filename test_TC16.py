@@ -13,7 +13,7 @@ TC 16: Mary posts a comment in Nestor’s message on the Health topic.
 ])
 def test_TC16_ShouldAllowToAddCommentToExistingPostWithLiveStatus(username, email, password, roles):
     ############# Login each user
-    url = getHost() + "/users/login"
+    url = getHost() + "/user/login"
     headers = {'Content-Type': 'application/json'}
     payload = {'email': email, 'password': password}
     response = requests.post(url, headers=headers, data=json.dumps(payload))
@@ -26,7 +26,7 @@ def test_TC16_ShouldAllowToAddCommentToExistingPostWithLiveStatus(username, emai
 
 
     ########### Get posts from Health topic
-    url = getHost() + "/posts/topic/health"
+    url = getHost() + "/post/topic/health"
     headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     response = requests.get(url, headers=headers)
     responseBody = response.json();

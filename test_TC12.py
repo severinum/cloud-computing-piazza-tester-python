@@ -15,7 +15,7 @@ TC 12: Nick and Olga comment on Mary’s post on the Tech topic in a round-robin
 ])
 def test_TC12_ShouldAllowToAddActivityOnOtherUsersPosts(username, email, password, roles):
     ############# Login each user
-    url = getHost() + "/users/login"
+    url = getHost() + "/user/login"
     headers = {'Content-Type': 'application/json'}
     payload = {'email': email, 'password': password}
     response = requests.post(url, headers=headers, data=json.dumps(payload))
@@ -29,7 +29,7 @@ def test_TC12_ShouldAllowToAddActivityOnOtherUsersPosts(username, email, passwor
 
     ########### Get all posts
     # Get all posts
-    url = getHost() + "/posts/topic/tech"
+    url = getHost() + "/post/topic/tech"
     headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     response = requests.get(url, headers=headers)
     responseBody = response.json();

@@ -11,7 +11,7 @@ TC 05: Nick posts a message in the Tech topic with an expiration time using his 
 def test_TC05_ShouldAddPost_when_UserLoggedIn():
 
     ############# Login as Nick
-    url = getHost() + "/users/login"
+    url = getHost() + "/user/login"
     headers = {'Content-Type': 'application/json'}
     payload = {'email': 'nick@contoso.com', 'password': 'nickPa$$123'}
     response = requests.post(url, headers=headers, data=json.dumps(payload))
@@ -23,7 +23,7 @@ def test_TC05_ShouldAddPost_when_UserLoggedIn():
     assert token is not None
 
     # Add post
-    url = getHost() + "/posts"
+    url = getHost() + "/post"
     headers = headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     payload = {
         'title': 'Nick post',

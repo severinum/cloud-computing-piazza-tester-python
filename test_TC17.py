@@ -13,7 +13,7 @@ TC 17: Mary dislikes Nestor’s message on the Health topic after the end of pos
 ])
 def test_TC17_ShouldNotAllowToAddCommentToExistingPostWithExpitedStatus(username, email, password, roles):
     ############# Login each user
-    url = getHost() + "/users/login"
+    url = getHost() + "/user/login"
     headers = {'Content-Type': 'application/json'}
     payload = {'email': email, 'password': password}
     response = requests.post(url, headers=headers, data=json.dumps(payload))
@@ -26,7 +26,7 @@ def test_TC17_ShouldNotAllowToAddCommentToExistingPostWithExpitedStatus(username
 
 
     ########### Get posts from Health topic
-    url = getHost() + "/posts/topic/health"
+    url = getHost() + "/post/topic/health"
     headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     response = requests.get(url, headers=headers)
     responseBody = response.json();
@@ -35,7 +35,7 @@ def test_TC17_ShouldNotAllowToAddCommentToExistingPostWithExpitedStatus(username
     assert responseBody[0]['owner']['username'] == 'Nestor'
 
     # Test can't wait 5 min for Nestor post to expire, so we set it exiration status manually to Expired
-    url = getHost() + "/posts/"+responseBody[0]['_id']
+    url = getHost() + "/post/"+responseBody[0]['_id']
     headers = headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     payload = {
          "expiration_time": 0
@@ -46,7 +46,7 @@ def test_TC17_ShouldNotAllowToAddCommentToExistingPostWithExpitedStatus(username
 
 
     ########### Get posts from Health topic again, this time with updated Post status 
-    url = getHost() + "/posts/topic/health"
+    url = getHost() + "/post/topic/health"
     headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     response = requests.get(url, headers=headers)
     responseBody = response.json();

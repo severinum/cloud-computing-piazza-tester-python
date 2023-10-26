@@ -14,7 +14,7 @@ TC 14: Nestor posts a message in the Health topic with an expiration time using 
 def test_TC14_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
 
     ############# Login as Mary
-    url = getHost() + "/users/login"
+    url = getHost() + "/user/login"
     headers = {'Content-Type': 'application/json'}
     payload = {'email': email, 'password': password}
     response = requests.post(url, headers=headers, data=json.dumps(payload))
@@ -26,7 +26,7 @@ def test_TC14_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
     assert token is not None
 
     # Add Olga's item
-    url = getHost() + "/posts"
+    url = getHost() + "/post"
     headers = headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     payload = {
         'title': 'Nestor post',

@@ -13,7 +13,7 @@ TC 03: Olga calls the API (any endpoint) without using a token. This call should
 ])
 def test_TC03_ShouldReturnStatus401_when_UserNotAuthenticated(username, email, password, roles):
     # Random endpoint. Here items
-    url = getHost() + "/posts"
+    url = getHost() + "/post"
     headers = {'Content-Type': 'application/json'}
     payload = {'email': email, 'password': password}
     # Token not sent in header

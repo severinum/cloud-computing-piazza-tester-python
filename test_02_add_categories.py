@@ -19,7 +19,7 @@ def test_ShoulCreateAdminAccountAndLoginAsAdmin_When_AdminAuthenticated():
     userUsername = 'testadmin'
 
     ########  Register admin ########
-    registrationUrl = getHost() + "/users/register"
+    registrationUrl = getHost() + "/user/register"
     username = userUsername
     email = userEmail
     password = userPlainPassword
@@ -40,7 +40,7 @@ def test_ShoulCreateAdminAccountAndLoginAsAdmin_When_AdminAuthenticated():
     user_id = responseBody['_id']
 
     # Login as admin
-    url = getHost() + "/users/login"
+    url = getHost() + "/user/login"
     headers = {'Content-Type': 'application/json'}
     payload = {'email': email, 'password': password}
     response = requests.post(url, headers=headers, data=json.dumps(payload))
@@ -53,7 +53,7 @@ def test_ShoulCreateAdminAccountAndLoginAsAdmin_When_AdminAuthenticated():
 
     # Add categories: sport, politcs, health, tech
     # Add topic: sport
-    url = getHost() + "/topics"
+    url = getHost() + "/topic"
     headers = headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     payload = {
         'name': 'sport'

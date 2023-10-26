@@ -14,7 +14,7 @@ TC 08: Nick and Olga “like” Mary’ s post on the T ech topic.
 ])
 def test_TC08_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
     ############# Login each user
-    url = getHost() + "/users/login"
+    url = getHost() + "/user/login"
     headers = {'Content-Type': 'application/json'}
     payload = {'email': email, 'password': password}
     response = requests.post(url, headers=headers, data=json.dumps(payload))
@@ -28,7 +28,7 @@ def test_TC08_ShouldAddPost_when_UserLoggedIn(username, email, password, roles):
 
     ########### Get Mary's post in tech
     # Get all posts
-    url = getHost() + "/posts/topic/tech"
+    url = getHost() + "/post/topic/tech"
     headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
     response = requests.get(url, headers=headers)
     responseBody = response.json();
